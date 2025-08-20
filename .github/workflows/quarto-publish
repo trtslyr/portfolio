@@ -1,0 +1,29 @@
+name: Quarto Publish
+
+on:
+  push:
+    branches: [ "main" ]   # change branch name if your repo uses "master"
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: "latest"
+
+      - name: Set up Pandoc (optional but recommended)
+        uses: r-lib/actions/setup-pandoc@v2
+
+      - name: Render Quarto project
+        run: quarto render
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: _site
