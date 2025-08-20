@@ -1,0 +1,42 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "Student Portfolio"
+  navbar:
+    left:
+      - text: Home
+        href: index.md
+      - text: About
+        href: about.md
+      - text: Assignments
+        href: assignments/index.md
+      - text: Final Project
+        href: final-project.md
+      - text: Notes
+        href: notes/index.md
+
+  sidebar:
+    style: docked
+    search: true
+    collapse-level: 1
+    contents:
+      - index.md
+      - about.md
+      - section: "Assignments"
+        contents:
+          - assignments/index.md
+          - assignments/assignment-1.md
+          - assignments/assignment-2.md
+          - assignments/assignment-3.md
+          - assignments/assignment-4.md
+          - assignments/assignment-5.md
+      - final-project.md
+      - notes/index.md
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    code-copy: true
